@@ -26,5 +26,17 @@ jobs:
         working-directory: ./terraform/defaults
         run: terraform plan -out=plan.tfplan
         shell: bash
-    
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+  
+      - name: Terraform Apply
+        uses: ./.github/apply
+        with:
+          terraform_version: ${{ env.terraformversion }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID || inputs.aws-access-key-id }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY || inputs.aws-secret-access-key }}   
+          aws-region: ${{ env.aws-region || inputs.aws-region }} 
+          github_token: ${{ secrets.TOCKEN_GIT || inputs.github_token }}
      
