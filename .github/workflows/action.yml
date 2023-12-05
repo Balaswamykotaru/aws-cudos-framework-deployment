@@ -13,30 +13,19 @@ jobs:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v3
         with:
-          aws-access-key-id: ${{ inputs.aws-access-key-id }}
-          aws-secret-access-key: ${{ inputs.aws-secret-access-key }}
-          aws-region: ${{ inputs.aws-region }}
+          role-to-assume: arn:aws:iam::450683952831:role/AWSControlTowerExecution
+          aws-region: eu-central-1
         
       - name: Terraform validate
-        working-directory: ./terraform/defaults
-        run: terraform validate
+        working-directory: ./terraform-modules/cur-setup-destination
+        run: | 
+          terraform init
+          terraform validate 
         shell: bash
     
       - name: Terraform plan
-        working-directory: ./terraform/defaults
-        run: terraform plan -out=plan.tfplan
-        shell: bash
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-  
-      - name: Terraform Apply
-        uses: ./.github/apply
-        with:
-          terraform_version: ${{ env.terraformversion }}
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID || inputs.aws-access-key-id }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY || inputs.aws-secret-access-key }}   
-          aws-region: ${{ env.aws-region || inputs.aws-region }} 
-          github_token: ${{ secrets.TOCKEN_GIT || inputs.github_token }}
-     
+        working-directory: ./terraform/cur-setup-destination
+        run: terraform plan
+       
+      
+           
