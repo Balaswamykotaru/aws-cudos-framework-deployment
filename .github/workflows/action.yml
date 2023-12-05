@@ -10,8 +10,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
+     # - name: Configure AWS credentials
+       #uses: aws-actions/configure-aws-credentials@v1
         #with:
           #role-to-assume: arn:aws:iam::450683952831:role/AWSControlTowerExecution
           #aws-region: eu-central-1
