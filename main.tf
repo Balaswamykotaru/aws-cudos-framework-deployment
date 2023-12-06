@@ -1,9 +1,10 @@
 provider "aws" {
+  alias   = "dst"
   region = "eu-central-1"
 }
 provider "aws" {
   region = "us-east-1"
-  alias  = "useast1"
+  alias  = "dst_useast1"
 }
 # Destination account setup
 module "cur_destination" {
@@ -12,7 +13,7 @@ module "cur_destination" {
   create_cur         = false # Set to true to create an additional CUR in the aggregation account
   # Provider alias for us-east-1 must be passed explicitly (required for CUR setup)
   providers = {
-    aws.useast1 = aws.useast1
+    aws.useast1 = aws.dst_useast1
   }
 }
 
@@ -25,7 +26,7 @@ provider "aws" {
 }
 provider "aws" {
   region  = "us-east-1"
-   alias   = "src1_useast1"
+  alias   = "src1_useast1"
   assume_role {
     role_arn = var.src1_role_arn
   }
@@ -71,7 +72,7 @@ provider "aws" {
 module "cid_dashboards" {
     source = "github.com/aws-samples/aws-cudos-framework-deployment//terraform-modules/cid-dashboards"
     stack_name      = "Cloud-Intelligence-Dashboards"
-    template_bucket = "mytestbucket123332"
+    template_bucket = "bucket-cur-test"
   
     stack_parameters = {
       "PrerequisitesQuickSight"            = "yes"
