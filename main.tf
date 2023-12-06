@@ -30,15 +30,15 @@ provider "aws" {
   }
 }
 
-# provider "aws" {
-#   profile = "src1"
-#   region  = "us-east-1"
-#   #shared_credentials_files  = ["C:/Users/balaswamy.kotaru/.aws/credentials"]
-#   alias   = "src1_useast1"
-#   assume_role {
-#     role_arn = var.src1_role_arn
-#   }
-# }
+provider "aws" {
+  profile = "src1"
+  region  = "us-east-1"
+  #shared_credentials_files  = ["C:/Users/balaswamy.kotaru/.aws/credentials"]
+  alias   = "src1_useast1"
+  assume_role {
+    role_arn = var.src1_role_arn
+  }
+}
 
 provider "aws" {
   profile = "src2"
@@ -85,4 +85,3 @@ provider "aws" {
     aws.useast1 = aws.src2_useast1
   }
 } 
-
