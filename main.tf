@@ -21,7 +21,7 @@ data "aws_caller_identity" "scr1" {
   provider = aws.src1
 }
 provider "aws" {
-  profile = "src1"
+  #profile = "src1"
   region  = "eu-central-1"
   #shared_credentials_files  = ["C:/Users/balaswamy.kotaru/.aws/credentials"]
   alias   = "src1"
@@ -31,7 +31,7 @@ provider "aws" {
 }
 
 provider "aws" {
-  profile = "src1"
+  #profile = "src1"
   region  = "us-east-1"
   #shared_credentials_files  = ["C:/Users/balaswamy.kotaru/.aws/credentials"]
   alias   = "src1_useast1"
@@ -41,7 +41,7 @@ provider "aws" {
 }
 
 provider "aws" {
-  profile = "src2"
+  #profile = "src2"
   region  = "eu-central-1"
   #shared_credentials_files  = ["C:/Users/balaswamy.kotaru/.aws/credentials"]
   alias   = "src2"
@@ -51,7 +51,7 @@ provider "aws" {
 }
 
 provider "aws" {
-  profile = "src2"
+  #profile = "src2"
   region  = "us-east-1"
   #shared_credentials_files  = ["C:/Users/balaswamy.kotaru/.aws/credentials"]
   alias   = "src2_useast1"
