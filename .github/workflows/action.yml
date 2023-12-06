@@ -35,7 +35,7 @@ jobs:
         shell: bash
     
       - name: Terraform plan
-        working-directory: ./terraform/cur-setup-destination
+        working-directory: ./terraform-modules/cur-setup-destination
         run: terraform plan
        
       
