@@ -58,7 +58,7 @@ provider "aws" {
   assume_role {
     role_arn = var.src2_role_arn
   }
-# }
+ }
 # Configure one or more source (payer) accounts
  module "cur_source1" {
   #source = "github.com/aws-samples/aws-cudos-framework-deployment//terraform-modules/cur-setup-source"
