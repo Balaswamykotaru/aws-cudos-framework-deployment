@@ -28,14 +28,16 @@ jobs:
        #   profile-name: test
         
       - name: Terraform validate
-        working-directory: ./terraform-modules/cur-setup-destination
+        #working-directory: ./terraform-modules/cur-setup-destination
+        working-directory: .
         run: | 
           terraform init
           terraform validate 
         shell: bash
     
       - name: Terraform plan
-        working-directory: ./terraform-modules/cur-setup-destination
+        working-directory: .
+        #working-directory: ./terraform-modules/cur-setup-destination
         run: terraform plan
        
       
