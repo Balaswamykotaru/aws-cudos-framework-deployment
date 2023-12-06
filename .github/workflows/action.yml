@@ -31,7 +31,6 @@ jobs:
        #   profile-name: test
         
       - name: Terraform validate
-        #working-directory: ./terraform-modules/cur-setup-destination
         working-directory: .
         run: | 
           terraform init
