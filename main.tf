@@ -17,7 +17,9 @@ module "cur_destination" {
     aws.useast1 = aws.useast1
   }
 }
-
+data "aws_caller_identity" "scr1" {
+  provider = aws.src1
+}
 provider "aws" {
   profile = "src1"
   region  = "eu-central-1"
@@ -37,6 +39,7 @@ provider "aws" {
     role_arn = var.src1_role_arn
   }
 }
+
 provider "aws" {
   profile = "src2"
   region  = "eu-central-1"
