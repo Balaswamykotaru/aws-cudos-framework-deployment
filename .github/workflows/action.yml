@@ -43,9 +43,9 @@ jobs:
         #working-directory: ./terraform-modules/cur-setup-destination
         run: terraform plan -var-file="test.tfvars"
        
-      - name: Terraform apply
-        working-directory: .
-        run: terraform apply -auto-approve -var-file="test.tfvars"
+      #- name: Terraform apply
+      #  working-directory: .
+       # run: terraform apply -auto-approve -var-file="test.tfvars"
            
       - name: Terraform destroy
         working-directory: .
