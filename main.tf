@@ -30,15 +30,15 @@ provider "aws" {
   }
 }
 
-provider "aws" {
-  profile = "src1"
-  region  = "us-east-1"
-  #shared_credentials_files  = ["C:/Users/balaswamy.kotaru/.aws/credentials"]
-  alias   = "src1_useast1"
-  assume_role {
-    role_arn = var.src1_role_arn
-  }
-}
+# provider "aws" {
+#   profile = "src1"
+#   region  = "us-east-1"
+#   #shared_credentials_files  = ["C:/Users/balaswamy.kotaru/.aws/credentials"]
+#   alias   = "src1_useast1"
+#   assume_role {
+#     role_arn = var.src1_role_arn
+#   }
+# }
 
 provider "aws" {
   profile = "src2"
@@ -50,15 +50,15 @@ provider "aws" {
   }
 }
 
-provider "aws" {
-  profile = "src2"
-  region  = "us-east-1"
-  #shared_credentials_files  = ["C:/Users/balaswamy.kotaru/.aws/credentials"]
-  alias   = "src2_useast1"
-  assume_role {
-    role_arn = var.src2_role_arn
-  }
-}
+# provider "aws" {
+#   profile = "src2"
+#   region  = "us-east-1"
+#   #shared_credentials_files  = ["C:/Users/balaswamy.kotaru/.aws/credentials"]
+#   alias   = "src2_useast1"
+#   assume_role {
+#     role_arn = var.src2_role_arn
+#   }
+# }
 # Configure one or more source (payer) accounts
  module "cur_source1" {
   #source = "github.com/aws-samples/aws-cudos-framework-deployment//terraform-modules/cur-setup-source"
