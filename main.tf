@@ -10,10 +10,49 @@ provider "aws" {
 module "cur_destination" {
   source = "github.com/aws-samples/aws-cudos-framework-deployment//terraform-modules/cur-setup-destination"
   source_account_ids = ["797078318809","611960772844","450683952831"]
-  create_cur         = true # Set to true to create an additional CUR in the aggregation account
+  create_cur         = false # Set to true to create an additional CUR in the aggregation account
 
   # Provider alias for us-east-1 must be passed explicitly (required for CUR setup)
   providers = {
     aws.useast1 = aws.useast1
+  }
+}
+
+provider "aws" {
+  profile = "src1"
+  region  = "eu-central-1"
+  #shared_credentials_files  = ["C:/Users/balaswamy.kotaru/.aws/credentials"]
+  alias   = "src1"
+  assume_role {
+    role_arn = var.src1_role_arn
+  }
+}
+
+provider "aws" {
+  profile = "src1"
+  region  = "us-east-1"
+  #shared_credentials_files  = ["C:/Users/balaswamy.kotaru/.aws/credentials"]
+  alias   = "src1_useast1"
+  assume_role {
+    role_arn = var.src1_role_arn
+  }
+}
+provider "aws" {
+  profile = "src2"
+  region  = "eu-central-1"
+  #shared_credentials_files  = ["C:/Users/balaswamy.kotaru/.aws/credentials"]
+  alias   = "src2"
+  assume_role {
+    role_arn = var.src2_role_arn
+  }
+}
+
+provider "aws" {
+  profile = "src2"
+  region  = "us-east-1"
+  #shared_credentials_files  = ["C:/Users/balaswamy.kotaru/.aws/credentials"]
+  alias   = "src2_useast1"
+  assume_role {
+    role_arn = var.src2_role_arn
   }
 }
