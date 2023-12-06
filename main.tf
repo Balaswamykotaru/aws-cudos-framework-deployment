@@ -71,8 +71,8 @@ provider "aws" {
 }
 
  module "cur_source2" {
-  #source = "github.com/aws-samples/aws-cudos-framework-deployment//terraform-modules/cur-setup-source"
-  source = "./terraform-modules/cur-setup-source"
+  source = "github.com/aws-samples/aws-cudos-framework-deployment//terraform-modules/cur-setup-source"
+  
   destination_bucket_arn = module.cur_destination.cur_bucket_arn
 
   # Provider alias for us-east-1 must be passed explicitly (required for CUR setup)
