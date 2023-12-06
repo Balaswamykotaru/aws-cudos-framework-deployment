@@ -2,11 +2,11 @@
 # CUDOS deployemnt 
 #------------------------------------------------------------------------------#
 src1_role_arn = "arn:aws:iam::611960772844:role/AWSControlTowerExecution"
-source1_account_id                  = "611960772844"
+#source1_account_id                  = "611960772844"
 
 
 src2_role_arn = "arn:aws:iam::039014492208:role/AWSControlTowerExecution"
-source2_account_id                  = "039014492208"
+#source2_account_id                  = "039014492208"
 
 
 #src3_role_arn = "arn:aws:iam::450683952831:role/AWSControlTowerExecution"
