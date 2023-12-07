@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "terraform_state_cudos_1" {
-  bucket = "terraform-state-cudos_1"
+  bucket = "terraform-state-cudos-1"
 }
   
 resource "aws_s3_bucket_versioning" "versioning" {
@@ -42,7 +42,7 @@ resource "aws_dynamodb_table" "terraform_cudos_1" {
 
   server_side_encryption {
     enabled = true
-    kms_key_arn = aws_kms_key.dynamodb_encryption_key_cudos_1.arn
+    kms_key_arn = aws_kms_key.dynamodb_encryption_key_cudos_2.arn
   }
 
   attribute {
@@ -51,13 +51,13 @@ resource "aws_dynamodb_table" "terraform_cudos_1" {
   }
 }
 
-resource "aws_kms_key" "dynamodb_encryption_key_cudos_1" {
+resource "aws_kms_key" "dynamodb_encryption_key_cudos_2" {
   description             = "DynamoDB Encryption Key"
   enable_key_rotation    = true
 }
 
-resource "aws_kms_alias" "dynamodb_encryption_key_cudos_1" {
-  name          = "alias/dynamodb_encryption_key_cudos_1"
-  target_key_id = aws_kms_key.dynamodb_encryption_key_cudos_1.key_id
+resource "aws_kms_alias" "dynamodb_encryption_key_cudos_2" {
+  name          = "alias/dynamodb_encryption_key_cudos_2"
+  target_key_id = aws_kms_key.dynamodb_encryption_key_cudos_2.key_id
 }
 
