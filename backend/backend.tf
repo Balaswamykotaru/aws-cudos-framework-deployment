@@ -1,16 +1,16 @@
-resource "aws_s3_bucket" "terraform_state" {
-  bucket = "terraform-state-bucket1"
+resource "aws_s3_bucket" "terraform_state_cudos" {
+  bucket = "terraform-state-cudos1"
 }
   
 resource "aws_s3_bucket_versioning" "versioning" {
-    bucket = aws_s3_bucket.terraform_state.id
+    bucket = aws_s3_bucket.terraform_state_cudos.id
  versioning_configuration {
     status = "Enabled"
   }
 }
 
 resource "aws_s3_bucket_server_side_encryption_configuration" "mykey" {
-    bucket = aws_s3_bucket.terraform_state.id
+    bucket = aws_s3_bucket.terraform_state_cudos.id
 
   rule {
     apply_server_side_encryption_by_default {
@@ -20,7 +20,7 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "mykey" {
 }
 
 resource "aws_s3_bucket_public_access_block" "access" {
-  bucket = aws_s3_bucket.terraform_state.id
+  bucket = aws_s3_bucket.terraform_state_cudos.id
 
   block_public_acls = true
   block_public_policy = true
@@ -30,7 +30,7 @@ resource "aws_s3_bucket_public_access_block" "access" {
 
 #
 
-resource "aws_dynamodb_table" "terraform_locks" {
+resource "aws_dynamodb_table" "terraform_locks1" {
   name         = "terraform-locks-ccs"
   hash_key     = "LockID"
   stream_enabled = true
