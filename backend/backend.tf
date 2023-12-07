@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "terraform_state_cudos_1" {
-  bucket = "terraform-state-cudos1"
+  bucket = "terraform-state-cudos-1"
 }
   
 resource "aws_s3_bucket_versioning" "versioning" {
