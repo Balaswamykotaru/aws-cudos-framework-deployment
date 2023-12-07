@@ -53,13 +53,13 @@ resource "aws_dynamodb_table" "terraform_locks1" {
   }
 }
 
-resource "aws_kms_key" "dynamodb_encryption_key1" {
+resource "aws_kms_key" "dynamodb_encryption_key12" {
   description             = "DynamoDB Encryption Key"
   enable_key_rotation    = true
 }
 
-resource "aws_kms_alias" "dynamodb_encryption_key_alias" {
+resource "aws_kms_alias" "dynamodb_encryption_key_alias1" {
   name          = "alias/dynamodb_encryption_key1"
-  target_key_id = aws_kms_key.dynamodb_encryption_key1.key_id
+  target_key_id = aws_kms_key.dynamodb_encryption_key12.key_id
 }
 
