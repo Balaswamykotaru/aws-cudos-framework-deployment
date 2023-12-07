@@ -1,16 +1,16 @@
-resource "aws_s3_bucket" "terraform_state_cudos_5" {
-  bucket = "terraform-state-cudos-5"
+resource "aws_s3_bucket" "terraform_state_cudos" {
+  bucket = "terraform-state-cudos"
 }
   
 resource "aws_s3_bucket_versioning" "versioning" {
-    bucket = aws_s3_bucket.terraform_state_cudos_5.id
+    bucket = aws_s3_bucket.terraform_state_cudos.id
  versioning_configuration {
     status = "Enabled"
   }
 }
 
-resource "aws_s3_bucket_server_side_encryption_configuration" "mykey_5" {
-    bucket = aws_s3_bucket.terraform_state_cudos_5.id
+resource "aws_s3_bucket_server_side_encryption_configuration" "mykey" {
+    bucket = aws_s3_bucket.terraform_state_cudos.id
 
   rule {
     apply_server_side_encryption_by_default {
@@ -19,8 +19,8 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "mykey_5" {
   }
 }
 
-resource "aws_s3_bucket_public_access_block" "access_5" {
-  bucket = aws_s3_bucket.terraform_state_cudos_5.id
+resource "aws_s3_bucket_public_access_block" "access" {
+  bucket = aws_s3_bucket.terraform_state_cudos.id
 
   block_public_acls = true
   block_public_policy = true
@@ -28,8 +28,8 @@ resource "aws_s3_bucket_public_access_block" "access_5" {
   restrict_public_buckets = true
 }
 
-resource "aws_dynamodb_table" "terraform_cudos_5" {
-  name         = "terraform-cudos-5"
+resource "aws_dynamodb_table" "terraform_cudos" {
+  name         = "terraform-cudos"
   hash_key     = "LockID"
   stream_enabled = true
   stream_view_type = "NEW_AND_OLD_IMAGES"
@@ -42,7 +42,7 @@ resource "aws_dynamodb_table" "terraform_cudos_5" {
 
   server_side_encryption {
     enabled = true
-    kms_key_arn = aws_kms_key.dynamodb_encryption_key_cudos_5.arn
+    kms_key_arn = aws_kms_key.dynamodb_encryption_key_cudos.arn
   }
 
   attribute {
@@ -51,14 +51,14 @@ resource "aws_dynamodb_table" "terraform_cudos_5" {
   }
 }
 
-resource "aws_kms_key" "dynamodb_encryption_key_cudos_5" {
+resource "aws_kms_key" "dynamodb_encryption_key_cudos" {
   description             = "DynamoDB Encryption Key"
   enable_key_rotation    = true
 }
 
-resource "aws_kms_alias" "dynamodb_encryption_key_cudos_5" {
-  name          = "alias/dynamodb_encryption_key_cudos_5"
-  target_key_id = aws_kms_key.dynamodb_encryption_key_cudos_5.key_id
+resource "aws_kms_alias" "dynamodb_encryption_key_cudos" {
+  name          = "alias/dynamodb_encryption_key_cudos"
+  target_key_id = aws_kms_key.dynamodb_encryption_key_cudos.key_id
 }
 
 

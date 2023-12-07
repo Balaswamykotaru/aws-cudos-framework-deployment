@@ -35,7 +35,7 @@ jobs:
         env:
           FILE: global/terraform.tfstate
           
-          AWS_S3_BUCKET: terraform-state-cudos-5
+          AWS_S3_BUCKET: terraform-state-cudos
         
 
       - name: Create Terraform remote backend
@@ -52,23 +52,21 @@ jobs:
         shell: bash
 
       - name: Terraform validate
-        working-directory: ./CID-Dasboards
-        #working-directory: ./terraform-modules/cur-setup-destination
+        working-directory: ./Dashboards-setup
         run: | 
           terraform init
           terraform validate 
         shell: bash
     
       - name: Terraform plan
-        working-directory: ./CID-Dasboards
-        #working-directory: ./terraform-modules/cur-setup-destination
+        working-directory: ./Dashboards-setup
         run: terraform plan -var-file="terraform.tfvars"
        
       - name: Terraform apply
-        working-directory: ./CID-Dasboards
+        working-directory: ./Dashboards-setup
         run: terraform apply -auto-approve -var-file="terraform.tfvars"
            
       #- name: Terraform destroy
-      # working-directory: ./CID-Dasboards
+      # working-directory: ./Dashboards-setup
       # run: terraform destroy -auto-approve -var-file="terraform.tfvars"
            
