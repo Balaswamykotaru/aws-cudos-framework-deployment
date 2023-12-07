@@ -61,3 +61,4 @@ resource "aws_kms_alias" "dynamodb_encryption_key_cudos_5" {
   target_key_id = aws_kms_key.dynamodb_encryption_key_cudos_5.key_id
 }
 
+

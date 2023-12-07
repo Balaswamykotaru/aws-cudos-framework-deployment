@@ -24,6 +24,7 @@ module "cur_destination" {
     aws.useast1 = aws.dst_useast1
   }
 }
+##
 
 provider "aws" {
   region  = "eu-central-1"
