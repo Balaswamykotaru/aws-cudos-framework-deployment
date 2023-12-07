@@ -30,7 +30,7 @@ resource "aws_s3_bucket_public_access_block" "access" {
 
 #
 
-resource "aws_dynamodb_table" "terraform_locks" {
+resource "aws_dynamodb_table" "terraform_locks1" {
   name         = "terraform-locks-ccs"
   hash_key     = "LockID"
   stream_enabled = true
