@@ -1,8 +1,8 @@
 terraform {
   backend "s3" {
-    bucket = "terraform-state-cudos-4"
+    bucket = "terraform-state-cudos-5"
     key    = "global/terraform.tfstate"
-    dynamodb_table = "terraform-cudos-4"
+    dynamodb_table = "terraform-cudos-5"
     region = "eu-central-1"
   }
 }
