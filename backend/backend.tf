@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "terraform_state" {
-  bucket = "terraform-state-bucket"
+  bucket = "terraform-state-bucket1"
 }
   
 resource "aws_s3_bucket_versioning" "versioning" {
@@ -31,7 +31,7 @@ resource "aws_s3_bucket_public_access_block" "access" {
 #
 
 resource "aws_dynamodb_table" "terraform_locks" {
-  name         = "terraform-up-and-running-locks-ccs"
+  name         = "terraform-locks-ccs"
   hash_key     = "LockID"
   stream_enabled = true
   stream_view_type = "NEW_AND_OLD_IMAGES"
@@ -44,7 +44,7 @@ resource "aws_dynamodb_table" "terraform_locks" {
 
   server_side_encryption {
     enabled = true
-    kms_key_arn = aws_kms_key.dynamodb_encryption_key.arn
+    kms_key_arn = aws_kms_key.dynamodb_encryption_key1.arn
   }
 
   attribute {
@@ -53,13 +53,13 @@ resource "aws_dynamodb_table" "terraform_locks" {
   }
 }
 
-resource "aws_kms_key" "dynamodb_encryption_key" {
+resource "aws_kms_key" "dynamodb_encryption_key1" {
   description             = "DynamoDB Encryption Key"
   enable_key_rotation    = true
 }
 
 resource "aws_kms_alias" "dynamodb_encryption_key_alias" {
-  name          = "alias/dynamodb_encryption_key"
-  target_key_id = aws_kms_key.dynamodb_encryption_key.key_id
+  name          = "alias/dynamodb_encryption_key1"
+  target_key_id = aws_kms_key.dynamodb_encryption_key1.key_id
 }
 
