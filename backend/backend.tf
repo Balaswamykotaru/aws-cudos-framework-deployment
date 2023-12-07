@@ -1,16 +1,16 @@
-resource "aws_s3_bucket" "terraform_state_cudos_1" {
-  bucket = "terraform-state-cudos-1"
+resource "aws_s3_bucket" "terraform_state_cudos_2" {
+  bucket = "terraform-state-cudos-2"
 }
   
 resource "aws_s3_bucket_versioning" "versioning" {
-    bucket = aws_s3_bucket.terraform_state_cudos_1.id
+    bucket = aws_s3_bucket.terraform_state_cudos_2.id
  versioning_configuration {
     status = "Enabled"
   }
 }
 
-resource "aws_s3_bucket_server_side_encryption_configuration" "mykey_1" {
-    bucket = aws_s3_bucket.terraform_state_cudos_1.id
+resource "aws_s3_bucket_server_side_encryption_configuration" "mykey_2" {
+    bucket = aws_s3_bucket.terraform_state_cudos_2.id
 
   rule {
     apply_server_side_encryption_by_default {
@@ -19,8 +19,8 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "mykey_1" {
   }
 }
 
-resource "aws_s3_bucket_public_access_block" "access_1" {
-  bucket = aws_s3_bucket.terraform_state_cudos_1.id
+resource "aws_s3_bucket_public_access_block" "access_2" {
+  bucket = aws_s3_bucket.terraform_state_cudos_2.id
 
   block_public_acls = true
   block_public_policy = true
@@ -28,8 +28,8 @@ resource "aws_s3_bucket_public_access_block" "access_1" {
   restrict_public_buckets = true
 }
 
-resource "aws_dynamodb_table" "terraform_cudos_1" {
-  name         = "terraform-cudos-1"
+resource "aws_dynamodb_table" "terraform_cudos_2" {
+  name         = "terraform-cudos-2"
   hash_key     = "LockID"
   stream_enabled = true
   stream_view_type = "NEW_AND_OLD_IMAGES"
@@ -42,7 +42,7 @@ resource "aws_dynamodb_table" "terraform_cudos_1" {
 
   server_side_encryption {
     enabled = true
-    kms_key_arn = aws_kms_key.dynamodb_encryption_key_cudos_2.arn
+    kms_key_arn = aws_kms_key.dynamodb_encryption_key_cudos_3.arn
   }
 
   attribute {
@@ -51,13 +51,13 @@ resource "aws_dynamodb_table" "terraform_cudos_1" {
   }
 }
 
-resource "aws_kms_key" "dynamodb_encryption_key_cudos_2" {
+resource "aws_kms_key" "dynamodb_encryption_key_cudos_3" {
   description             = "DynamoDB Encryption Key"
   enable_key_rotation    = true
 }
 
-resource "aws_kms_alias" "dynamodb_encryption_key_cudos_2" {
-  name          = "alias/dynamodb_encryption_key_cudos_2"
-  target_key_id = aws_kms_key.dynamodb_encryption_key_cudos_2.key_id
+resource "aws_kms_alias" "dynamodb_encryption_key_cudos_3" {
+  name          = "alias/dynamodb_encryption_key_cudos_3"
+  target_key_id = aws_kms_key.dynamodb_encryption_key_cudos_3.key_id
 }
 

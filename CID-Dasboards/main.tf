@@ -1,3 +1,11 @@
+terraform {
+  backend "s3" {
+    bucket = "terraform-state-cudos-2"
+    key    = "global/terraform.tfstate"
+    dynamodb_table = "terraform-cudos-2"
+    region = "eu-central-1"
+  }
+}
 provider "aws" {
   alias   = "dst"
   region = "eu-central-1"

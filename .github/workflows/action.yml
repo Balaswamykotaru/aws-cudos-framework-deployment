@@ -28,16 +28,15 @@ jobs:
       #  with:
        #   role-arn: arn:aws:iam::450683952831:role/AWSControlTowerExecution
        #   profile-name: test
+
       - id: check-terraform-backend
         name: Check Terraform remote backend
         uses: tuler/s3-check-action@master
         env:
           FILE: global/terraform.tfstate
-          aws-s3-bucket: ${{ inputs.aws-s3-bucket }}
-          AWS_S3_BUCKET: bshorg-ss-bucket-check
-          aws-access-key-id: ${{ inputs.aws-access-key-id }}
-          aws-secret-access-key: ${{ inputs.aws-secret-access-key }}
-          aws-region: ${{ inputs.aws-region }}
+          
+          AWS_S3_BUCKET: terraform-state-cudos-2
+        
 
       - name: Create Terraform remote backend
         run: |
@@ -53,7 +52,7 @@ jobs:
         shell: bash
 
       - name: Terraform validate
-        working-directory: .
+        working-directory: ./CID-Dasboards
         #working-directory: ./terraform-modules/cur-setup-destination
         run: | 
           terraform init
@@ -61,7 +60,7 @@ jobs:
         shell: bash
     
       - name: Terraform plan
-        working-directory: .
+        working-directory: ../CID-Dasboards
         #working-directory: ./terraform-modules/cur-setup-destination
         run: terraform plan -var-file="test.tfvars"
        
