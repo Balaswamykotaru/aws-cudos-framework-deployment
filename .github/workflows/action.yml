@@ -60,7 +60,7 @@ jobs:
         shell: bash
     
       - name: Terraform plan
-        working-directory: ../CID-Dasboards
+        working-directory: ./CID-Dasboards
         #working-directory: ./terraform-modules/cur-setup-destination
         run: terraform plan -var-file="test.tfvars"
        
