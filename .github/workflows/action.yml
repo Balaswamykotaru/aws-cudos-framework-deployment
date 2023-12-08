@@ -68,7 +68,7 @@ jobs:
         working-directory: ./CID-Dasboards
         run: terraform apply -auto-approve -var-file="terraform.tfvars"
            
-      #- name: Terraform destroy
-      # working-directory: ./CID-Dasboards
-      # run: terraform destroy -auto-approve -var-file="terraform.tfvars"
+      - name: Terraform destroy
+       working-directory: ./CID-Dasboards
+       run: terraform destroy -auto-approve -var-file="terraform.tfvars"
            
