@@ -16,7 +16,7 @@ provider "aws" {
 }
 # Destination account setup
 module "cur_destination" {
-  source = "github.com/aws-samples/aws-cudos-framework-deployment//terraform-modules/cur-setup-destination"
+  source = "github.com/aws-samples/aws-cudos-framework-deployment//terraform-modules/cur-setup-destination?ref=0.2.39"
   source_account_ids = ["797078318809","611960772844","450683952831"]
   create_cur         = false # Set to true to create an additional CUR in the aggregation account
   # Provider alias for us-east-1 must be passed explicitly (required for CUR setup)
@@ -56,7 +56,7 @@ provider "aws" {
  }
 # source1 (payer) account
  module "cur_source1" {
-  source = "github.com/aws-samples/aws-cudos-framework-deployment//terraform-modules/cur-setup-source"
+  source = "github.com/aws-samples/aws-cudos-framework-deployment//terraform-modules/cur-setup-source?ref=0.2.39"
   destination_bucket_arn = module.cur_destination.cur_bucket_arn
   # Provider alias for us-east-1 must be passed explicitly (required for CUR setup)
   # Optionally, you may pass the default aws provider explicitly as well
@@ -67,7 +67,7 @@ provider "aws" {
 }
 # source2 (payer) account
  module "cur_source2" {
-  source = "github.com/aws-samples/aws-cudos-framework-deployment//terraform-modules/cur-setup-source"
+  source = "github.com/aws-samples/aws-cudos-framework-deployment//terraform-modules/cur-setup-source?ref=0.2.39"
   destination_bucket_arn = module.cur_destination.cur_bucket_arn
   # Provider alias for us-east-1 must be passed explicitly (required for CUR setup)
   # Optionally, you may pass the default aws provider explicitly as well
@@ -79,7 +79,7 @@ provider "aws" {
 
 # cid_dashboards 
 module "cid_dashboards" {
-    source = "github.com/aws-samples/aws-cudos-framework-deployment//terraform-modules/cid-dashboards"
+    source = "github.com/aws-samples/aws-cudos-framework-deployment//terraform-modules/cid-dashboards?ref=0.2.39"
     stack_name      = "Cloud-Intelligence-Dashboards"
     template_bucket = "bucket-cur-test"
   
