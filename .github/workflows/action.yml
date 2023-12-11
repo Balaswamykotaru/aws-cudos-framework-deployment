@@ -64,11 +64,11 @@ jobs:
         #working-directory: ./terraform-modules/cur-setup-destination
         run: terraform plan -var-file="terraform.tfvars"
        
-      #- name: Terraform apply
-       # working-directory: ./CID-Dasboards
-       # run: terraform apply -auto-approve -var-file="terraform.tfvars"
-           
-      - name: Terraform destroy
+      - name: Terraform apply
         working-directory: ./CID-Dasboards
-        run: terraform destroy -auto-approve -var-file="terraform.tfvars"
+        run: terraform apply -auto-approve -var-file="terraform.tfvars"
+           
+      #- name: Terraform destroy
+      #  working-directory: ./CID-Dasboards
+       # run: terraform destroy -auto-approve -var-file="terraform.tfvars"
            
