@@ -17,7 +17,7 @@ provider "aws" {
 # Destination account setup
 module "cur_destination" {
   source = "github.com/aws-samples/aws-cudos-framework-deployment//terraform-modules/cur-setup-destination?ref=0.2.39"
-  source_account_ids = ["797078318809","611960772844","450683952831"]
+  source_account_ids = ["797078318809","611960772844","039014492208"]
   create_cur         = false # Set to true to create an additional CUR in the aggregation account
   # Provider alias for us-east-1 must be passed explicitly (required for CUR setup)
   providers = {
